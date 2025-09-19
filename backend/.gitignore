@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# .env files (for sensitive data)
+.env
+
+# Log files
+*.log
+
+# IDE folders
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Build folders
+dist/
+build/
+
+# Coverage reports
+coverage/
+
+# NPM debug logs
+npm-debug.log*
