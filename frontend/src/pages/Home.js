@@ -1,11 +1,21 @@
-// frontend/src/pages/Home.js
 import React from "react";
-import "../assets/styles/Home.css";
-import bgImage from "../assets/images/bg-main.jpeg"; // replace with your uploaded background
-import gallery1 from "../assets/images/gallery1.jpeg"; // replace with your images
-import gallery2 from "../assets/images/gallery2.jpeg";
+import "../styles/Home.css";
+
+// Background + main (medium) image
+import bgImage from "../images/bg-main.jpg";
+import mainImage from "../images/main-artist.png";
+
+// Six small gallery images
+import img1 from "../images/gallery1.jpg";
+import img2 from "../images/gallery2.jpg";
+import img3 from "../images/gallery3.jpg";
+import img4 from "../images/gallery4.jpg";
+import img5 from "../images/gallery5.jpg";
+import img6 from "../images/gallery6.jpg";
 
 const Home = () => {
+  const smallImages = [img1, img2, img3, img4, img5, img6];
+
   return (
     <div
       className="home-container"
@@ -18,64 +28,78 @@ const Home = () => {
       }}
     >
       <div className="overlay">
-        <header className="header">
-          <h1 className="title">Music Portal</h1>
-        </header>
-
         <main className="main-content">
-          <section className="image-section">
-            <img src={gallery1} alt="Main" className="main-image" />
-
-            <div className="image-gallery">
-              <img src={gallery1} alt="Gallery 1" className="small-image" />
-              <img src={gallery2} alt="Gallery 2" className="small-image" />
-              {/* Add more small images here */}
+          {/* LEFT PANEL - News */}
+          <section className="left-panel">
+            <div className="news-box">
+              <h3>Latest Interview</h3>
+              <p>The sound of the year. A deep dive into the artist’s process.</p>
+            </div>
+            <div className="news-box">
+              <h3>Studio Life</h3>
+              <p>Behind the scenes of the latest hit-making session.</p>
+            </div>
+            <div className="news-box">
+              <h3>Album Incoming</h3>
+              <p>Everything you need to know about the next release.</p>
             </div>
           </section>
 
-          <section className="text-section">
+          {/* CENTER PANEL - Main Artist Image & Buttons */}
+          <section className="center-panel">
+            <div className="main-image-wrapper">
+              <img
+                src={mainImage}
+                alt="Main Artist"
+                className="main-image"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/assets/images/fallback.jpeg";
+                }}
+              />
+              <div className="main-image-overlay"></div>
+            </div>
+
             <div className="buttons">
               <button
-                className="nav-button"
-                onClick={() => (window.location.href = "/news")}
-              >
-                News Updates
-              </button>
-              <button
-                className="nav-button"
+                className="btn blue"
                 onClick={() => (window.location.href = "/beats")}
               >
-                Fresh Beats
+                Beats Available
               </button>
               <button
-                className="nav-button"
+                className="btn red"
+                onClick={() => (window.location.href = "/news")}
+              >
+                Newsletter
+              </button>
+              <button
+                className="btn blue-light"
                 onClick={() => (window.location.href = "/admin")}
               >
-                Contact Admin
+                Follow the show
               </button>
             </div>
           </section>
-        </main>
 
-        <footer className="footer">
-          <button className="buy-button">Buy Beat</button>
-          <a
-            href="mailto:admin@example.com"
-            className="contact-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contact via Gmail
-          </a>
-          <a
-            href="https://wa.me/your-whatsapp-number"
-            className="contact-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contact via WhatsApp
-          </a>
-        </footer>
+          {/* RIGHT PANEL - 12 Small Thumbnails */}
+          <section className="right-panel">
+            {[...Array(12)].map((_, i) => (
+              <div className="thumb-wrapper" key={i}>
+                <img
+                  src={smallImages[i % smallImages.length]}
+                  alt={`Thumb ${i + 1}`}
+                  className="thumb"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "/assets/images/fallback.jpeg";
+                  }}
+                />
+                <div className="thumb-overlay"></div>
+              </div>
+            ))}
+          </section>
+        </main>
       </div>
     </div>
   );

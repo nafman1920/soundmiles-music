@@ -1,0 +1,61 @@
+/* Ensure the entire app takes full height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main app container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Wrapper for all content above footer */
+.main-wrapper {
+  flex: 1; /* pushes footer to bottom */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer styling */
+.main-footer {
+  text-align: center;
+  padding: 16px 20px;
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364); /* ✅ Matches header */
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: auto; /* ensures it sticks at bottom */
+  font-family: 'Poppins', sans-serif;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+/* Links inside footer */
+.main-footer a {
+  color: #1e90ff;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+
+.main-footer a:hover {
+  color: #63b3ff;
+}
+
+/* Responsive text scaling */
+@media (max-width: 900px) {
+  .main-footer {
+    font-size: 0.85rem;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-footer {
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+}

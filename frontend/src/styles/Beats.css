@@ -1,0 +1,137 @@
+/* ================= Beats Page ================= */
+.beats-page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 24px 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Gradient background */
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-attachment: fixed;
+  box-sizing: border-box;
+}
+
+/* ================= Beat Card ================= */
+.beat-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 4px solid transparent;
+  padding: 22px;
+  margin-bottom: 24px;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 640px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient accent strip */
+.beat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #1e90ff, #90ee90);
+  border-radius: 4px;
+}
+
+.beat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* ================= Beat Title ================= */
+.beat-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, #1e90ff, #90ee90);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.beat-card small {
+  font-weight: 400;
+  color: #bbb;
+}
+
+/* ================= Actions (Buy, Listen) ================= */
+.beat-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.beat-actions button {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 18px;
+  border: none;
+  background: linear-gradient(90deg, #1e90ff, #187bcd);
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.beat-actions button:hover {
+  background: linear-gradient(90deg, #187bcd, #1e90ff);
+  transform: translateY(-2px);
+}
+
+/* ================= Audio Player ================= */
+audio {
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 6px;
+  outline: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= RESPONSIVENESS ================= */
+@media (max-width: 768px) {
+  .beat-card {
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  .beat-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .beat-actions {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .beat-card {
+    padding: 16px;
+  }
+
+  .beat-card h2 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .beat-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .beat-actions button {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,207 @@
+/* Global Admin Panel Styles */
+.admin-panel {
+  min-height: 100vh;
+  width: 100%;
+  padding: 30px 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Gradient + glass background */
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-attachment: fixed;
+}
+
+/* Title */
+.admin-panel h2 {
+  margin-bottom: 24px;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  text-align: center;
+  background: linear-gradient(90deg, #1e90ff, #90ee90);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Logout Button */
+.admin-panel > div:first-child > button {
+  padding: 8px 14px;
+  background: rgba(255, 77, 77, 0.85);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.admin-panel > div:first-child > button:hover {
+  background: rgba(224, 62, 62, 0.95);
+  transform: translateY(-2px);
+}
+
+/* Form Container */
+.admin-form {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 28px;
+  border-radius: 16px;
+  max-width: 720px;
+  width: 100%;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Inputs, Selects, Textareas */
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+  padding: 12px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 6px #1e90ff;
+}
+
+.admin-form input::placeholder,
+.admin-form textarea::placeholder {
+  color: #ccc;
+}
+
+.admin-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Submit Button */
+.admin-form button[type="submit"] {
+  padding: 12px;
+  background: linear-gradient(90deg, #1e90ff, #187bcd);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #187bcd, #1e90ff);
+  transform: translateY(-2px);
+}
+
+/* Upload Status Message */
+.status-message {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #90ee90;
+  text-align: center;
+}
+
+/* Drag & drop file upload */
+.drop-zone {
+  border: 2px dashed #1e90ff;
+  padding: 22px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  position: relative;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.drop-zone:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.02);
+}
+
+.drop-zone input {
+  display: none;
+}
+
+/* File preview */
+.preview-box {
+  margin-top: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.preview-box img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.preview-box audio {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 6px;
+}
+
+/* Markdown Preview */
+.markdown-preview {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 14px;
+  border-radius: 8px;
+  color: #eaeaea;
+  font-size: 0.95rem;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+  .admin-form {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  .admin-panel h2 {
+    font-size: 1.6rem;
+  }
+
+  .preview-box audio {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-form {
+    padding: 18px;
+    gap: 14px;
+    border-radius: 12px;
+  }
+
+  .admin-panel h2 {
+    font-size: 1.4rem;
+  }
+
+  .drop-zone {
+    padding: 18px;
+  }
+
+  .markdown-preview {
+    font-size: 0.9rem;
+  }
+}
