@@ -21,6 +21,7 @@
   text-align: center;
   background: linear-gradient(90deg, #1e90ff, #90ee90);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -170,6 +171,168 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Content Listing */
+.content-list {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 24px;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.content-list h3 {
+  margin-bottom: 18px;
+  color: #90ee90;
+}
+
+.content-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.content-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.content-item:last-child {
+  border-bottom: none;
+}
+
+.content-info {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.content-info img {
+  max-width: 100px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.content-info audio {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 10px;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: rgba(255, 77, 77, 0.8);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 50, 50, 0.9);
+  transform: scale(1.05);
+}
+
+/* Return Home Button */
+.return-home-btn {
+  margin-top: 32px;
+  text-decoration: none;
+  color: #1e90ff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.return-home-btn:hover {
+  color: #63b3ed;
+}
+
+/* --- Genre Filter Bar --- */
+.filter-bar {
+  margin: 24px 0 12px 0;
+  max-width: 720px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  font-weight: 600;
+  color: #90ee90;
+}
+
+.filter-bar label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.filter-bar select {
+  width: auto;
+  max-width: 200px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.filter-bar select:hover,
+.filter-bar select:focus {
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  box-shadow: 0 0 6px #1e90ff;
+}
+
+/* --- Pagination Controls --- */
+.pagination-controls {
+  margin: 28px 0 36px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  font-weight: 600;
+  color: #90ee90;
+  font-size: 1rem;
+}
+
+.pagination-controls button {
+  padding: 8px 16px;
+  background: linear-gradient(90deg, #1e90ff, #187bcd);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pagination-controls button:disabled {
+  background: rgba(30, 144, 255, 0.4);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pagination-controls button:not(:disabled):hover {
+  background: linear-gradient(90deg, #187bcd, #1e90ff);
+  transform: translateY(-2px);
+}
+
+.pagination-controls span {
+  min-width: 120px;
+  text-align: center;
+  user-select: none;
+}
+
 /* RESPONSIVENESS */
 @media (max-width: 768px) {
   .admin-form {
@@ -183,6 +346,32 @@
 
   .preview-box audio {
     max-width: 100%;
+  }
+
+  .content-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .delete-btn {
+    align-self: flex-end;
+  }
+
+  .filter-bar {
+    justify-content: center;
+  }
+
+  .filter-bar label {
+    font-size: 0.9rem;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pagination-controls span {
+    min-width: auto;
   }
 }
 
@@ -203,5 +392,32 @@
 
   .markdown-preview {
     font-size: 0.9rem;
+  }
+
+  .content-info img {
+    max-width: 80px;
+  }
+
+  .delete-btn {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-bar select {
+    max-width: 100%;
+  }
+
+  .pagination-controls {
+    gap: 10px;
+  }
+
+  .pagination-controls button {
+    width: 100%;
+    padding: 10px 0;
   }
 }

@@ -17,16 +17,17 @@
 
 /* ================= Beat Card ================= */
 .beat-card {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-left: 4px solid transparent;
   padding: 22px;
   margin-bottom: 24px;
   border-radius: 14px;
   width: 100%;
   max-width: 640px;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  backdrop-filter: saturate(180%) blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -45,7 +46,8 @@
 
 .beat-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 /* ================= Beat Title ================= */
@@ -134,4 +136,71 @@ audio {
     width: 100%;
     font-size: 0.95rem;
   }
+}
+
+/* ===== Pagination Common Styles ===== */
+.pagination {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 600;
+  user-select: none;
+  justify-content: center;
+}
+
+/* ===== News Pagination ===== */
+.news-page .pagination {
+  color: #eaeaea;
+}
+
+.news-page .pagination button {
+  background: linear-gradient(90deg, #ff6347, #ffa07a);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 99, 71, 0.5);
+  transition: background 0.3s ease;
+}
+
+.news-page .pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+  background: rgba(255, 99, 71, 0.3);
+}
+
+.news-page .pagination button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #ffa07a, #ff6347);
+}
+
+/* ===== Beats Pagination ===== */
+.beats-page .pagination {
+  color: #ffffff;
+}
+
+.beats-page .pagination button {
+  background: linear-gradient(90deg, #1e90ff, #187bcd);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.6);
+  transition: background 0.3s ease;
+}
+
+.beats-page .pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+  background: rgba(30, 144, 255, 0.3);
+}
+
+.beats-page .pagination button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #187bcd, #1e90ff);
 }

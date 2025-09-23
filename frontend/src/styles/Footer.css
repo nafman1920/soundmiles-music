@@ -15,7 +15,7 @@ html, body, #root {
 
 /* Wrapper for all content above footer */
 .main-wrapper {
-  flex: 1; /* pushes footer to bottom */
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -24,38 +24,240 @@ html, body, #root {
 .main-footer {
   text-align: center;
   padding: 16px 20px;
-  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364); /* ✅ Matches header */
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
   color: #aaa;
   font-size: 0.9rem;
-  margin-top: auto; /* ensures it sticks at bottom */
+  margin-top: auto;
   font-family: 'Poppins', sans-serif;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(6px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  animation: fadeInFooter 0.7s ease-in-out;
 }
 
-/* Links inside footer */
-.main-footer a {
-  color: #1e90ff;
-  text-decoration: none;
-  margin: 0 8px;
+/* Footer entry animation */
+@keyframes fadeInFooter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Info row layout */
+.footer-info-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.5;
   transition: color 0.3s ease;
 }
 
-.main-footer a:hover {
+/* Animate text color on hover */
+.footer-info-row span:hover {
+  color: #ffffff;
+}
+
+/* Phone & email block styling */
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Icon styles */
+.footer-icon {
+  font-size: 0.9rem;
+  color: #1e90ff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-contact-item:hover .footer-icon {
+  transform: scale(1.2);
   color: #63b3ff;
 }
 
-/* Responsive text scaling */
+/* Links inside footer */
+.main-footer a,
+.footer-info-row a {
+  color: #1e90ff;
+  text-decoration: none;
+  margin: 0 4px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.main-footer a:hover,
+.footer-info-row a:hover {
+  color: #63b3ff;
+  transform: scale(1.05);
+}
+
+/* Label before social icons */
+.footer-social-label {
+  font-weight: 500;
+  color: #ddd;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+}
+
+.footer-social-label:hover {
+  color: #ffffff;
+}
+
+/* Social icons container */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 0;
+}
+
+/* Social icon links */
+.social-icons a {
+  color: #aaa;
+  font-size: 1.4rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover glow and pulse */
+.social-icons a:hover {
+  color: #1e90ff;
+  transform: scale(1.15);
+  box-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
+  animation: pulseIcon 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pulseIcon {
+  from {
+    transform: scale(1.15);
+    box-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
+  }
+  to {
+    transform: scale(1.2);
+    box-shadow: 0 0 18px rgba(30, 144, 255, 0.85);
+  }
+}
+
+/* Toggle button (hidden on desktop) */
+.social-toggle-button {
+  display: none;
+  background-color: transparent;
+  border: 1px solid #1e90ff;
+  color: #1e90ff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-toggle-button:hover {
+  background-color: #1e90ff;
+  color: #fff;
+}
+
+/* ---------- Responsive Behavior ---------- */
+
+/* Medium screens */
 @media (max-width: 900px) {
   .main-footer {
     font-size: 0.85rem;
     padding: 14px;
   }
+
+  .social-icons a {
+    font-size: 1.3rem;
+    gap: 15px;
+  }
+
+  .footer-info-row {
+    gap: 10px;
+  }
 }
 
+/* Tablet / small screens */
+@media (max-width: 700px) {
+  .footer-info-row {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.8rem;
+  }
+
+  .footer-social-label {
+    font-size: 0.85rem;
+  }
+
+  .footer-contact-item {
+    flex-direction: row;
+  }
+}
+
+/* Mobile screens */
 @media (max-width: 600px) {
   .main-footer {
     font-size: 0.8rem;
     padding: 12px;
+  }
+
+  .social-toggle-button {
+    display: inline-block;
+    margin-top: 6px;
+  }
+
+  /* Mobile: icons hidden by default, shown when toggled */
+  .social-icons {
+    display: none;
+    margin-top: 10px;
+  }
+
+  .social-icons.visible {
+    display: flex;
+  }
+
+  .social-icons.collapsed {
+    display: none;
+  }
+}
+
+/* Desktop: always show icons, override toggle logic */
+@media (min-width: 601px) {
+  .social-icons {
+    display: flex !important;
+  }
+
+  .social-toggle-button {
+    display: none !important;
+  }
+}
+
+/* Tiny screens */
+@media (max-width: 360px) {
+  .social-icons {
+    gap: 10px;
+  }
+
+  .social-icons a {
+    font-size: 1rem;
   }
 }

@@ -90,22 +90,89 @@
   opacity: 1;
 }
 
-.buttons {
+/* -------------------- Floating Buttons (Global) -------------------- */
+.floating-buttons {
+  position: relative;
+  width: 200px;
+  height: 70px;
+  margin-top: 30px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  user-select: none;
 }
 
-/* -------------------- Right Panel -------------------- */
+.floating-buttons button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  transition: box-shadow 0.3s ease;
+  position: absolute;
+  top: 0;
+}
+
+/* Blue button */
+.floating-buttons button.blue {
+  background: linear-gradient(90deg, #1e90ff, #187bcd);
+  left: 0;
+  animation: floatLeftRight 4s ease-in-out infinite;
+}
+
+.floating-buttons button.blue:hover {
+  box-shadow: 0 6px 20px rgba(30, 144, 255, 0.7);
+}
+
+/* Red button */
+.floating-buttons button.red {
+  background: linear-gradient(90deg, #dc143c, #b22222);
+  right: 0;
+  animation: floatRightLeft 4s ease-in-out infinite;
+}
+
+.floating-buttons button.red:hover {
+  box-shadow: 0 6px 20px rgba(220, 20, 60, 0.7);
+}
+
+/* Keyframes (Shared) */
+@keyframes floatLeftRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes floatRightLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-30px);
+  }
+}
+
+/* -------------------- Right Panel (Grid for 12 images) -------------------- */
 .right-panel {
   flex: 1;
   min-width: 260px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
   gap: 10px;
-  justify-content: center;
+  justify-items: center;
+  align-content: start;
+  padding: 10px 0;
 }
 
 .thumb-wrapper {
@@ -114,6 +181,8 @@
   height: 70px;
   border-radius: 8px;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .thumb {
@@ -142,6 +211,71 @@
   opacity: 1;
 }
 
+/* -------------------- Modal Gallery Styles -------------------- */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeInModal 0.3s ease;
+  cursor: pointer;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
+  animation: popZoom 0.4s ease;
+  cursor: default;
+  pointer-events: none;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+  z-index: 1100;
+}
+
+.modal-close:hover {
+  transform: scale(1.2);
+  color: #1e90ff;
+}
+
+/* Modal Animations */
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popZoom {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 /* -------------------- Responsive -------------------- */
 @media (max-width: 1024px) {
   .main-content {
@@ -160,31 +294,73 @@
     width: 60px;
     height: 60px;
   }
+
+  .floating-buttons {
+    width: 160px;
+    height: 60px;
+  }
+
+  .floating-buttons button {
+    width: 60px;
+    height: 60px;
+    font-size: 0.7rem;
+    top: 5px;
+  }
+
+  .floating-buttons button.blue {
+    animation: floatLeftRightSmall 4s ease-in-out infinite;
+  }
+
+  .floating-buttons button.red {
+    animation: floatRightLeftSmall 4s ease-in-out infinite;
+  }
 }
 
 @media (max-width: 480px) {
-  .main-image-wrapper {
-    max-width: 100%;
+  .floating-buttons {
+    width: 140px;
+    height: 50px;
+    margin-top: 20px;
   }
 
-  .thumb-wrapper {
+  .floating-buttons button {
     width: 50px;
     height: 50px;
+    font-size: 0.65rem;
+    top: 3px;
   }
 
-  .buttons {
-    gap: 8px;
+  .floating-buttons button.blue {
+    animation: floatLeftRightSmall 4s ease-in-out infinite;
   }
 
-  .news-box {
-    padding: 16px;
+  .floating-buttons button.red {
+    animation: floatRightLeftSmall 4s ease-in-out infinite;
   }
+}
 
-  .news-box h3 {
-    font-size: 1.1rem;
+/* Keyframes for Small Screens */
+@keyframes floatLeftRightSmall {
+  0%, 100% {
+    transform: translateX(0);
   }
+  50% {
+    transform: translateX(20px);
+  }
+}
 
-  .news-box p {
-    font-size: 0.9rem;
+@keyframes floatRightLeftSmall {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .thumb-wrapper {
+    width: 80px;
+    height: 80px;
   }
 }

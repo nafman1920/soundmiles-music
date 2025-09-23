@@ -1,4 +1,4 @@
-/* News Page */
+/* ================= News Page ================= */
 .news-page {
   padding: 20px;
   font-family: 'Poppins', sans-serif;
@@ -9,7 +9,7 @@
   width: 100%;
   box-sizing: border-box;
 
-  /* Gradient background for consistency */
+  /* Gradient background for entire page */
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   background-attachment: fixed;
 }
@@ -21,26 +21,30 @@
   text-align: center;
   background: linear-gradient(90deg, #1e90ff, #90ee90);
   -webkit-background-clip: text;
+  background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* News Card */
+/* ================= News Card ================= */
 .news-card {
-  background: rgba(255, 255, 255, 0.08);
-  border-left: 4px solid transparent;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 5px solid transparent;
   padding: 20px;
   margin-bottom: 24px;
   border-radius: 12px;
   width: 100%;
   max-width: 700px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  backdrop-filter: saturate(180%) blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
+/* Gradient accent strip */
 .news-card::before {
   content: '';
   position: absolute;
@@ -52,10 +56,10 @@
   border-radius: 4px;
 }
 
-/* Hover effect */
 .news-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 99, 71, 0.35);
+  box-shadow: 0 10px 28px rgba(255, 99, 71, 0.35);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 /* Card Title */
@@ -65,6 +69,7 @@
   text-align: left;
   background: linear-gradient(90deg, #ff6347, #ffa07a);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -78,7 +83,7 @@
   margin-bottom: 12px;
 }
 
-/* Content */
+/* Content Paragraph */
 .news-card p {
   font-size: 1rem;
   line-height: 1.6;
@@ -86,7 +91,7 @@
   text-align: left;
 }
 
-/* Responsive Tweaks */
+/* ================= RESPONSIVENESS ================= */
 @media (max-width: 900px) {
   .news-page {
     padding: 16px;
@@ -118,4 +123,70 @@
   .news-card p {
     font-size: 0.95rem;
   }
+}
+/* ===== Pagination Common Styles ===== */
+.pagination {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 600;
+  user-select: none;
+  justify-content: center;
+}
+
+/* ===== News Pagination ===== */
+.news-page .pagination {
+  color: #eaeaea;
+}
+
+.news-page .pagination button {
+  background: linear-gradient(90deg, #ff6347, #ffa07a);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 99, 71, 0.5);
+  transition: background 0.3s ease;
+}
+
+.news-page .pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+  background: rgba(255, 99, 71, 0.3);
+}
+
+.news-page .pagination button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #ffa07a, #ff6347);
+}
+
+/* ===== Beats Pagination ===== */
+.beats-page .pagination {
+  color: #ffffff;
+}
+
+.beats-page .pagination button {
+  background: linear-gradient(90deg, #1e90ff, #187bcd);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.6);
+  transition: background 0.3s ease;
+}
+
+.beats-page .pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+  background: rgba(30, 144, 255, 0.3);
+}
+
+.beats-page .pagination button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #187bcd, #1e90ff);
 }
