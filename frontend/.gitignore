@@ -1,0 +1,10 @@
+# Node dependencies
+node_modules/
+
+# Cache files
+.cache/
+*.pack
+
+# Build output
+dist/
+build/
